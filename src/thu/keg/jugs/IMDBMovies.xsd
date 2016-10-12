@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="imdb.com">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="IMDB" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element type="xs:string" name="Title" minOccurs="0"/>
+              <xs:element type="xs:string" name="ReleaseDate" minOccurs="0"/>
+              <xs:element type="xs:string" name="Duration" minOccurs="0"/>
+              <xs:element type="xs:string" name="StoryLine" minOccurs="0"/>
+              <xs:element type="xs:string" name="Rating" minOccurs="0"/>
+              <xs:element name="Genres" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Genre" maxOccurs="unbounded" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Actors" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Actor" maxOccurs="unbounded" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Drectors" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Director" maxOccurs="unbounded" minOccurs="0"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element type="xs:string" name="Reviews" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="id" use="optional"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
