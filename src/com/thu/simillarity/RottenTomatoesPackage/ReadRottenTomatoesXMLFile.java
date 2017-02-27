@@ -11,13 +11,13 @@ import java.io.File;
  */
 public class ReadRottenTomatoesXMLFile
 {
-//    public static void main(String[] args)
-//    {
-//        ReadRottenTomatoesXMLFile rottentomatoesCom = new ReadRottenTomatoesXMLFile();
-//        RottentomatoesCom rtdata = rottentomatoesCom.getRotttenTomatoesData();
-//
-//        System.out.println();
-//    }
+    public static void main(String[] args)
+    {
+        ReadRottenTomatoesXMLFile rottentomatoesCom = new ReadRottenTomatoesXMLFile();
+        RottentomatoesCom rtdata = rottentomatoesCom.getRotttenTomatoesData();
+
+        System.out.println();
+    }
 
     public static RottentomatoesCom getRotttenTomatoesData()
     {
@@ -30,6 +30,7 @@ public class ReadRottenTomatoesXMLFile
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
             rottentomatoes = (RottentomatoesCom) unmarshaller.unmarshal(file);
+            System.out.println();
 
         }
         catch (Exception e)

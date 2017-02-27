@@ -24,3 +24,6 @@ After you create your own Java class to read a data from xml file. Please check 
     when, n-gram index is 2.
     (movie_1 n movie_2) = 2 and (movie_1 u movie_2) = 4
     and JSim(movie_1 , movie_2) = 2/4 = 0.5, which is less than 1. This make sense, as two movies are different movie.
+5) The Movie duration in each domain differs slighly more or less by 10 minutes because of cast consideration.
+    Therefore, the fault tolerance of +-10, is assigned to duration.
+6)
