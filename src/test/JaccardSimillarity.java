@@ -24,7 +24,8 @@ public class JaccardSimillarity
 
     public void getData()
     {
-        ImdbCom imdbData = ReadIMDBXMLFile.getIMDBData();
+        ReadIMDBXMLFile readIMDBXMLFile = new ReadIMDBXMLFile();
+        ImdbCom imdbData = readIMDBXMLFile.getIMDBData();
         RottentomatoesCom rtData = ReadRottenTomatoesXMLFile.getRotttenTomatoesData();
 
 
