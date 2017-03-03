@@ -71,7 +71,7 @@ public class ReadIMDBXMLFile
         return imdbCom;
     }
 
-    private void getReviews(String review) throws Exception
+    public void getReviews(String review) throws Exception
     {
         Annotation document = new Annotation(review);
         pipeline.annotate(document);
@@ -82,7 +82,7 @@ public class ReadIMDBXMLFile
         {
             sentenceSet.add(sentence.toString());
         }
-        saveToFile(sentenceSet);
+        //saveToFile(sentenceSet);
     }
 
     private void saveToFile(Set<String> sentenceSet) throws Exception

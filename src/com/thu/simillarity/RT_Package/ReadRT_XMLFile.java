@@ -39,7 +39,7 @@ public class ReadRT_XMLFile
                 }
                 //getAllReviews(reviews);
             }
-            getAllReviews(reviewSet);
+            //getAllReviews(reviewSet);
         }
         catch (Exception e)
         {

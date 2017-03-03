@@ -9,5 +9,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="stanford-corenlp-3.7.0" level="project" />
+    <orderEntry type="library" name="jars" level="project" />
   </component>
 </module>
