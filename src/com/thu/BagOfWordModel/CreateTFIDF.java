@@ -5,11 +5,16 @@ import com.thu.simillarity.IMDBPackage.ReadIMDBXMLFile;
 import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
+import org.apache.spark.api.java.function.Function;
 import org.apache.spark.ml.feature.*;
+import org.apache.spark.mllib.clustering.KMeans;
+import org.apache.spark.mllib.clustering.KMeansModel;
+import org.apache.spark.mllib.linalg.Vector;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +22,7 @@ import java.util.List;
 /**
  * Created by jugs on 3/3/17.
  */
-public class CreateTFIDF
+public class CreateTFIDF implements Serializable
 {
     public static void main(String[] args)
     {
@@ -77,9 +82,47 @@ public class CreateTFIDF
         Dataset<Row> featuredVector = hashingTF.transform(filteredData);
         IDF idf = new IDF().setInputCol("rawFeatures").setOutputCol("features");
         IDFModel idfModel = idf.fit(featuredVector);
-        Dataset<Row> tfIdfDF = idfModel.transform(featuredVector);
+
+        JavaRDD<Vector> kmeanVector = idfModel.transform(featuredVector)
+                .select("features").toJavaRDD()
+                .map(new Function<Row, Vector>()
+                {
+                    @Override
+                    public Vector call(Row row) throws Exception
+                    {
+                        return (Vector) row.get(0);
+                    }
+                });
 
         System.out.println();
+
+//        Dataset<Row> tfIdfDF = idfModel.transform(featuredVector);
+//
+//        computeKmeans(tfIdfDF);
+
+        System.out.println();
+
+    }
+
+    private void computeKmeans(Dataset<Row> tfIdfDF)
+    {
+//        JavaRDD tfIDFJavaRDD =  tfIdfDF.map(new Function<Row,Vector>()
+//        {
+//            public Vector call(Row row)
+//            {
+//
+//            }
+//        });
+//        //tfIdfDF.select("features").toJavaRDD();
+//        KMeansModel clusters = KMeans.train(tfIDFJavaRDD.rdd(), 5, 10);
+//
+//        for (Vector center : clusters.clusterCenters())
+//        {
+//            System.out.println(" center: " + center);
+//        }
+//
+//        double cost = clusters.computeCost(tfIDFJavaRDD.rdd());
+
 
     }
 
