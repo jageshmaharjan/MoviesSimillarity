@@ -3,21 +3,28 @@ package com.thu.BagOfWordModel;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.ml.feature.*;
+import org.apache.spark.mllib.clustering.KMeans;
+import org.apache.spark.mllib.clustering.KMeansModel;
+import org.apache.spark.mllib.linalg.DenseVector;
+import org.apache.spark.ml.linalg.SparseVector;
+import org.apache.spark.mllib.linalg.Vector;
+import org.apache.spark.mllib.linalg.Vectors;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.codehaus.janino.Java;
 
 import java.util.List;
 
 /**
  * Created by jugs on 3/6/17.
  */
-public class KMeans
+public class KMeansClustering
 {
     public static void main(String[] args)
     {
-        KMeans kMeans = new KMeans();
-        KMeans.getData();
+        KMeansClustering kMeans = new KMeansClustering();
+        KMeansClustering.getData();
 
     }
 
@@ -60,8 +67,39 @@ public class KMeans
         IDF idf = new IDF().setInputCol("rawFeatures").setOutputCol("features");
         IDFModel idfModel = idf.fit(featuredVector);
 
+//        ----In Dataset<Row> format---
+//        Dataset<Row> rescaledDF = idfModel.transform(featuredVector);
+//        rescaledDF.select("features").show();
+
         JavaRDD<Row> featuresRDD = idfModel.transform(featuredVector)
-                .select("features").toJavaRDD();
+                .select("features").toJavaRDD().cache();
+
+        computeKmeans(featuresRDD);
 
     }
+
+    private static Vector parseData(Row row){
+        return Vectors.dense(((SparseVector)row.get(0)).toArray());
+    }
+
+    private static void computeKmeans(JavaRDD<Row> featuresRDD)
+    {
+        JavaRDD<Vector> parsedData = featuresRDD.map(row -> parseData(row)).cache();
+
+        System.out.println();
+        int numberOfCluster = 10;
+        int numberofIterations = 100;
+        KMeansModel clusters = KMeans.train(parsedData.rdd(), numberOfCluster, numberofIterations);
+
+        for (Vector center: clusters.clusterCenters())
+        {
+            System.out.println("Centroid: " + center);
+        }
+
+
+
+        System.out.println();
+
+    }
+
 }
