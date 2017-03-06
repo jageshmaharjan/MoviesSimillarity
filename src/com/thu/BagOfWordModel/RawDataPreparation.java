@@ -1,7 +1,7 @@
 package com.thu.BagOfWordModel;
 
-import com.thu.simillarity.IMDBJavaObjectCode.ImdbCom;
-import com.thu.simillarity.IMDBPackage.ReadIMDBXMLFile;
+import com.thu.XMLDataManipulation.IMDBJavaObjectCode.ImdbCom;
+import com.thu.XMLDataManipulation.IMDBPackage.ReadIMDBXMLFile;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
-package com.thu.simillarity.RT_Package;
+package com.thu.XMLDataManipulation.RT_Package;
 
-import com.thu.simillarity.RT_JavaObjectCode.RT_Movies;
+import com.thu.XMLDataManipulation.RT_JavaObjectCode.RT_Movies;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;

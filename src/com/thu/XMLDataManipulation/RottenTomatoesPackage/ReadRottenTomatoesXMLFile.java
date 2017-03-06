@@ -1,6 +1,6 @@
-package com.thu.simillarity.RottenTomatoesPackage;
+package com.thu.XMLDataManipulation.RottenTomatoesPackage;
 
-import com.thu.simillarity.RottenTomatoesJavaObjectCode.RottentomatoesCom;
+import com.thu.XMLDataManipulation.RottenTomatoesJavaObjectCode.RottentomatoesCom;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;

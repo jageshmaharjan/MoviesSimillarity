@@ -1,4 +1,4 @@
-package com.thu.simillarity;
+package com.thu.SentimentDataPreparation;
 
 import java.io.*;
 import java.util.HashSet;

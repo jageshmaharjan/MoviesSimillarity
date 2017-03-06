@@ -1,5 +1,5 @@
 
-package com.thu.simillarity.RottenTomatoesJavaObjectCode;
+package com.thu.XMLDataManipulation.RottenTomatoesJavaObjectCode;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

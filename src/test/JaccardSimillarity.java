@@ -1,9 +1,9 @@
 package test;
 
-import com.thu.simillarity.IMDBJavaObjectCode.ImdbCom;
-import com.thu.simillarity.IMDBPackage.ReadIMDBXMLFile;
-import com.thu.simillarity.RottenTomatoesJavaObjectCode.RottentomatoesCom;
-import com.thu.simillarity.RottenTomatoesPackage.ReadRottenTomatoesXMLFile;
+import com.thu.XMLDataManipulation.IMDBJavaObjectCode.ImdbCom;
+import com.thu.XMLDataManipulation.IMDBPackage.ReadIMDBXMLFile;
+import com.thu.XMLDataManipulation.RottenTomatoesJavaObjectCode.RottentomatoesCom;
+import com.thu.XMLDataManipulation.RottenTomatoesPackage.ReadRottenTomatoesXMLFile;
 import edu.stanford.nlp.util.StringUtils;
 
 import java.util.*;

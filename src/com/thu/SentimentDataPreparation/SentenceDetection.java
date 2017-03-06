@@ -1,4 +1,4 @@
-package com.thu.simillarity;
+package com.thu.SentimentDataPreparation;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -19,7 +19,6 @@ public class SentenceDetection
         List<String> imdb_sentences = sentenceDetection.sentenceRandomSelection_imdb();
         List<String> rt_sentences = sentenceDetection.sentenceRandomSelection_rt();
         sentenceDetection.FinalizeSentence(imdb_sentences,rt_sentences);
-
     }
 
     private void FinalizeSentence(List<String> imdb_sentences, List<String> rt_sentences) throws Exception

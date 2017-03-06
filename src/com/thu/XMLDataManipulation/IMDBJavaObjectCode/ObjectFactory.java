@@ -1,5 +1,5 @@
 
-package com.thu.simillarity.IMDBJavaObjectCode;
+package com.thu.XMLDataManipulation.IMDBJavaObjectCode;
 
 import javax.xml.bind.annotation.XmlRegistry;
 

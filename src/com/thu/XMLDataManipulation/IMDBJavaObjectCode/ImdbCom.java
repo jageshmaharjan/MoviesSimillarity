@@ -1,5 +1,5 @@
 
-package com.thu.simillarity.RottenTomatoesJavaObjectCode;
+package com.thu.XMLDataManipulation.IMDBJavaObjectCode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,16 +21,16 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="RottenTomatoes" maxOccurs="unbounded" minOccurs="0">
+ *         &lt;element name="IMDB" maxOccurs="unbounded" minOccurs="0">
  *           &lt;complexType>
  *             &lt;complexContent>
  *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                 &lt;sequence>
- *                   &lt;element name="Title" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="ReleaseDate" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="Duration" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="StoryLine" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *                   &lt;element name="Rating" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *                   &lt;element name="Title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                   &lt;element name="ReleaseDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                   &lt;element name="Duration" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                   &lt;element name="StoryLine" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+ *                   &lt;element name="Rating" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *                   &lt;element name="Genres" minOccurs="0">
  *                     &lt;complexType>
  *                       &lt;complexContent>
@@ -42,18 +42,18 @@ import javax.xml.bind.annotation.XmlType;
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
  *                   &lt;/element>
- *                   &lt;element name="Actors">
+ *                   &lt;element name="Actors" minOccurs="0">
  *                     &lt;complexType>
  *                       &lt;complexContent>
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *                           &lt;sequence>
- *                             &lt;element name="actor" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+ *                             &lt;element name="Actor" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
  *                           &lt;/sequence>
  *                         &lt;/restriction>
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
  *                   &lt;/element>
- *                   &lt;element name="Directors" minOccurs="0">
+ *                   &lt;element name="Drectors" minOccurs="0">
  *                     &lt;complexType>
  *                       &lt;complexContent>
  *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -64,17 +64,7 @@ import javax.xml.bind.annotation.XmlType;
  *                       &lt;/complexContent>
  *                     &lt;/complexType>
  *                   &lt;/element>
- *                   &lt;element name="Reviews">
- *                     &lt;complexType>
- *                       &lt;complexContent>
- *                         &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *                           &lt;sequence>
- *                             &lt;element name="Review" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
- *                           &lt;/sequence>
- *                         &lt;/restriction>
- *                       &lt;/complexContent>
- *                     &lt;/complexType>
- *                   &lt;/element>
+ *                   &lt;element name="Reviews" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *                 &lt;/sequence>
  *                 &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" />
  *               &lt;/restriction>
@@ -91,41 +81,41 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "rottenTomatoes"
+    "imdb"
 })
-@XmlRootElement(name = "rottentomatoes.com")
-public class RottentomatoesCom {
+@XmlRootElement(name = "imdb.com")
+public class ImdbCom {
 
-    @XmlElement(name = "RottenTomatoes")
-    protected List<RottentomatoesCom.RottenTomatoes> rottenTomatoes;
+    @XmlElement(name = "IMDB")
+    protected List<ImdbCom.IMDB> imdb;
 
     /**
-     * Gets the value of the rottenTomatoes property.
+     * Gets the value of the imdb property.
      * 
      * <p>
      * This accessor method returns a reference to the live list,
      * not a snapshot. Therefore any modification you make to the
      * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rottenTomatoes property.
+     * This is why there is not a <CODE>set</CODE> method for the imdb property.
      * 
      * <p>
      * For example, to add a new item, do as follows:
      * <pre>
-     *    getRottenTomatoes().add(newItem);
+     *    getIMDB().add(newItem);
      * </pre>
      * 
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link RottentomatoesCom.RottenTomatoes }
+     * {@link ImdbCom.IMDB }
      * 
      * 
      */
-    public List<RottentomatoesCom.RottenTomatoes> getRottenTomatoes() {
-        if (rottenTomatoes == null) {
-            rottenTomatoes = new ArrayList<RottentomatoesCom.RottenTomatoes>();
+    public List<ImdbCom.IMDB> getIMDB() {
+        if (imdb == null) {
+            imdb = new ArrayList<ImdbCom.IMDB>();
         }
-        return this.rottenTomatoes;
+        return this.imdb;
     }
 
 
@@ -139,11 +129,11 @@ public class RottentomatoesCom {
      *   &lt;complexContent>
      *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *       &lt;sequence>
-     *         &lt;element name="Title" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="ReleaseDate" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="Duration" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="StoryLine" type="{http://www.w3.org/2001/XMLSchema}string"/>
-     *         &lt;element name="Rating" type="{http://www.w3.org/2001/XMLSchema}string"/>
+     *         &lt;element name="Title" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *         &lt;element name="ReleaseDate" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *         &lt;element name="Duration" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *         &lt;element name="StoryLine" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
+     *         &lt;element name="Rating" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
      *         &lt;element name="Genres" minOccurs="0">
      *           &lt;complexType>
      *             &lt;complexContent>
@@ -155,18 +145,18 @@ public class RottentomatoesCom {
      *             &lt;/complexContent>
      *           &lt;/complexType>
      *         &lt;/element>
-     *         &lt;element name="Actors">
+     *         &lt;element name="Actors" minOccurs="0">
      *           &lt;complexType>
      *             &lt;complexContent>
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
      *                 &lt;sequence>
-     *                   &lt;element name="actor" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+     *                   &lt;element name="Actor" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
      *                 &lt;/sequence>
      *               &lt;/restriction>
      *             &lt;/complexContent>
      *           &lt;/complexType>
      *         &lt;/element>
-     *         &lt;element name="Directors" minOccurs="0">
+     *         &lt;element name="Drectors" minOccurs="0">
      *           &lt;complexType>
      *             &lt;complexContent>
      *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
@@ -177,17 +167,7 @@ public class RottentomatoesCom {
      *             &lt;/complexContent>
      *           &lt;/complexType>
      *         &lt;/element>
-     *         &lt;element name="Reviews">
-     *           &lt;complexType>
-     *             &lt;complexContent>
-     *               &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-     *                 &lt;sequence>
-     *                   &lt;element name="Review" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
-     *                 &lt;/sequence>
-     *               &lt;/restriction>
-     *             &lt;/complexContent>
-     *           &lt;/complexType>
-     *         &lt;/element>
+     *         &lt;element name="Reviews" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
      *       &lt;/sequence>
      *       &lt;attribute name="id" type="{http://www.w3.org/2001/XMLSchema}string" />
      *     &lt;/restriction>
@@ -206,29 +186,29 @@ public class RottentomatoesCom {
         "rating",
         "genres",
         "actors",
-        "directors",
+        "drectors",
         "reviews"
     })
-    public static class RottenTomatoes {
+    public static class IMDB {
 
-        @XmlElement(name = "Title", required = true)
+        @XmlElement(name = "Title")
         protected String title;
-        @XmlElement(name = "ReleaseDate", required = true)
+        @XmlElement(name = "ReleaseDate")
         protected String releaseDate;
-        @XmlElement(name = "Duration", required = true)
+        @XmlElement(name = "Duration")
         protected String duration;
-        @XmlElement(name = "StoryLine", required = true)
+        @XmlElement(name = "StoryLine")
         protected String storyLine;
-        @XmlElement(name = "Rating", required = true)
+        @XmlElement(name = "Rating")
         protected String rating;
         @XmlElement(name = "Genres")
-        protected RottentomatoesCom.RottenTomatoes.Genres genres;
-        @XmlElement(name = "Actors", required = true)
-        protected RottentomatoesCom.RottenTomatoes.Actors actors;
-        @XmlElement(name = "Directors")
-        protected RottentomatoesCom.RottenTomatoes.Directors directors;
-        @XmlElement(name = "Reviews", required = true)
-        protected RottentomatoesCom.RottenTomatoes.Reviews reviews;
+        protected ImdbCom.IMDB.Genres genres;
+        @XmlElement(name = "Actors")
+        protected ImdbCom.IMDB.Actors actors;
+        @XmlElement(name = "Drectors")
+        protected ImdbCom.IMDB.Drectors drectors;
+        @XmlElement(name = "Reviews")
+        protected String reviews;
         @XmlAttribute(name = "id")
         protected String id;
 
@@ -357,10 +337,10 @@ public class RottentomatoesCom {
          * 
          * @return
          *     possible object is
-         *     {@link RottentomatoesCom.RottenTomatoes.Genres }
+         *     {@link ImdbCom.IMDB.Genres }
          *     
          */
-        public RottentomatoesCom.RottenTomatoes.Genres getGenres() {
+        public ImdbCom.IMDB.Genres getGenres() {
             return genres;
         }
 
@@ -369,10 +349,10 @@ public class RottentomatoesCom {
          * 
          * @param value
          *     allowed object is
-         *     {@link RottentomatoesCom.RottenTomatoes.Genres }
+         *     {@link ImdbCom.IMDB.Genres }
          *     
          */
-        public void setGenres(RottentomatoesCom.RottenTomatoes.Genres value) {
+        public void setGenres(ImdbCom.IMDB.Genres value) {
             this.genres = value;
         }
 
@@ -381,10 +361,10 @@ public class RottentomatoesCom {
          * 
          * @return
          *     possible object is
-         *     {@link RottentomatoesCom.RottenTomatoes.Actors }
+         *     {@link ImdbCom.IMDB.Actors }
          *     
          */
-        public RottentomatoesCom.RottenTomatoes.Actors getActors() {
+        public ImdbCom.IMDB.Actors getActors() {
             return actors;
         }
 
@@ -393,35 +373,35 @@ public class RottentomatoesCom {
          * 
          * @param value
          *     allowed object is
-         *     {@link RottentomatoesCom.RottenTomatoes.Actors }
+         *     {@link ImdbCom.IMDB.Actors }
          *     
          */
-        public void setActors(RottentomatoesCom.RottenTomatoes.Actors value) {
+        public void setActors(ImdbCom.IMDB.Actors value) {
             this.actors = value;
         }
 
         /**
-         * Gets the value of the directors property.
+         * Gets the value of the drectors property.
          * 
          * @return
          *     possible object is
-         *     {@link RottentomatoesCom.RottenTomatoes.Directors }
+         *     {@link ImdbCom.IMDB.Drectors }
          *     
          */
-        public RottentomatoesCom.RottenTomatoes.Directors getDirectors() {
-            return directors;
+        public ImdbCom.IMDB.Drectors getDrectors() {
+            return drectors;
         }
 
         /**
-         * Sets the value of the directors property.
+         * Sets the value of the drectors property.
          * 
          * @param value
          *     allowed object is
-         *     {@link RottentomatoesCom.RottenTomatoes.Directors }
+         *     {@link ImdbCom.IMDB.Drectors }
          *     
          */
-        public void setDirectors(RottentomatoesCom.RottenTomatoes.Directors value) {
-            this.directors = value;
+        public void setDrectors(ImdbCom.IMDB.Drectors value) {
+            this.drectors = value;
         }
 
         /**
@@ -429,10 +409,10 @@ public class RottentomatoesCom {
          * 
          * @return
          *     possible object is
-         *     {@link RottentomatoesCom.RottenTomatoes.Reviews }
+         *     {@link String }
          *     
          */
-        public RottentomatoesCom.RottenTomatoes.Reviews getReviews() {
+        public String getReviews() {
             return reviews;
         }
 
@@ -441,10 +421,10 @@ public class RottentomatoesCom {
          * 
          * @param value
          *     allowed object is
-         *     {@link RottentomatoesCom.RottenTomatoes.Reviews }
+         *     {@link String }
          *     
          */
-        public void setReviews(RottentomatoesCom.RottenTomatoes.Reviews value) {
+        public void setReviews(String value) {
             this.reviews = value;
         }
 
@@ -483,7 +463,7 @@ public class RottentomatoesCom {
          *   &lt;complexContent>
          *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
          *       &lt;sequence>
-         *         &lt;element name="actor" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
+         *         &lt;element name="Actor" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
          *       &lt;/sequence>
          *     &lt;/restriction>
          *   &lt;/complexContent>
@@ -498,6 +478,7 @@ public class RottentomatoesCom {
         })
         public static class Actors {
 
+            @XmlElement(name = "Actor")
             protected List<String> actor;
 
             /**
@@ -555,7 +536,7 @@ public class RottentomatoesCom {
         @XmlType(name = "", propOrder = {
             "director"
         })
-        public static class Directors {
+        public static class Drectors {
 
             @XmlElement(name = "Director")
             protected List<String> director;
@@ -647,66 +628,6 @@ public class RottentomatoesCom {
                     genre = new ArrayList<String>();
                 }
                 return this.genre;
-            }
-
-        }
-
-
-        /**
-         * <p>Java class for anonymous complex type.
-         * 
-         * <p>The following schema fragment specifies the expected content contained within this class.
-         * 
-         * <pre>
-         * &lt;complexType>
-         *   &lt;complexContent>
-         *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
-         *       &lt;sequence>
-         *         &lt;element name="Review" type="{http://www.w3.org/2001/XMLSchema}string" maxOccurs="unbounded" minOccurs="0"/>
-         *       &lt;/sequence>
-         *     &lt;/restriction>
-         *   &lt;/complexContent>
-         * &lt;/complexType>
-         * </pre>
-         * 
-         * 
-         */
-        @XmlAccessorType(XmlAccessType.FIELD)
-        @XmlType(name = "", propOrder = {
-            "review"
-        })
-        public static class Reviews {
-
-            @XmlElement(name = "Review")
-            protected List<String> review;
-
-            /**
-             * Gets the value of the review property.
-             * 
-             * <p>
-             * This accessor method returns a reference to the live list,
-             * not a snapshot. Therefore any modification you make to the
-             * returned list will be present inside the JAXB object.
-             * This is why there is not a <CODE>set</CODE> method for the review property.
-             * 
-             * <p>
-             * For example, to add a new item, do as follows:
-             * <pre>
-             *    getReview().add(newItem);
-             * </pre>
-             * 
-             * 
-             * <p>
-             * Objects of the following type(s) are allowed in the list
-             * {@link String }
-             * 
-             * 
-             */
-            public List<String> getReview() {
-                if (review == null) {
-                    review = new ArrayList<String>();
-                }
-                return this.review;
             }
 
         }

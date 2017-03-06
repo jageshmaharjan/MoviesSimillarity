@@ -75,7 +75,6 @@ public class KMeansClustering
                 .select("features").toJavaRDD().cache();
 
         computeKmeans(featuresRDD);
-
     }
 
     private static Vector parseData(Row row){
@@ -95,8 +94,6 @@ public class KMeansClustering
         {
             System.out.println("Centroid: " + center);
         }
-
-
 
         System.out.println();
 

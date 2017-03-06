@@ -1,10 +1,8 @@
-package com.thu.simillarity.IMDBPackage;
+package com.thu.XMLDataManipulation.IMDBPackage;
 
 
-import com.thu.simillarity.IMDBJavaObjectCode.ImdbCom;
-import com.thu.simillarity.RT_Package.ReadRT_XMLFile;
+import com.thu.XMLDataManipulation.IMDBJavaObjectCode.ImdbCom;
 import edu.stanford.nlp.ling.CoreAnnotations;
-import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
 import edu.stanford.nlp.util.CoreMap;
