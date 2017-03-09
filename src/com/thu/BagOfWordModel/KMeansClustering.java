@@ -95,6 +95,8 @@ public class KMeansClustering
             System.out.println("Centroid: " + center);
         }
 
+
+
         System.out.println();
 
     }
