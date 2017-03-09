@@ -19,7 +19,7 @@ public class ReadRT_XMLFile
         RT_Movies rt_movies = readRTXmlFile.getRT_Data();
     }
 
-    private RT_Movies getRT_Data()
+    public RT_Movies getRT_Data()
     {
         RT_Movies rt_movies = null;
         File file = new File("input/RottenTomatoesData/rt_movies.xml");
@@ -30,6 +30,7 @@ public class ReadRT_XMLFile
             Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();
 
             rt_movies = (RT_Movies) unmarshaller.unmarshal(file);
+
             for (int i=0; i< rt_movies.getItem().size(); i++)
             {
                 ArrayList<String> reviews = (ArrayList) rt_movies.getItem().get(i).getReviews().getValue();
