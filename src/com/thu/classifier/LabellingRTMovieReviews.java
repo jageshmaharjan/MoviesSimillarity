@@ -29,27 +29,29 @@ public class LabellingRTMovieReviews
         for (Object movie : rt_movies.getItem())
         {
             String title = ((RT_Movies.Item) movie).getTitle();
+            String plot = ((RT_Movies.Item) movie).getStoryLine();
             List<String> reviewList = ((RT_Movies.Item) movie).getReviews().getValue();
             System.out.println(title);
-            writeToFile(title, reviewList);
+            writeToFile(title, reviewList, plot);
         }
     }
 
-    private void writeToFile(String title, List<String> reviewList) throws Exception
+    private void writeToFile(String title, List<String> reviewList, String plot) throws Exception
     {
         String path = "/home/jugs/IdeaProjects/MoviesSimillarity/Review_Document";
         String new_title = checkTitleNamingFormat(title);
         FileWriter fw = new FileWriter(path +"/" + new_title + ".txt" , false);
+        fw.write(plot.trim() + "\n");
         for (String review : reviewList)
         {
-            fw.write(review + "\n");
+            fw.write(review.trim() + "\n");
         }
         fw.close();
     }
 
     private String checkTitleNamingFormat(String title)
     {
-        String new_str = title;
+        String new_str = title.trim();
         if (title.contains("/"))
         {
             new_str = title.replaceAll("/","&");

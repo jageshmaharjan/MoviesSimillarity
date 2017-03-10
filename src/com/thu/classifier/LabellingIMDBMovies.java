@@ -31,20 +31,21 @@ public class LabellingIMDBMovies
         {
             String title = ((ImdbCom.IMDB) imbd).getTitle();
             List<String> genreList = ((ImdbCom.IMDB) imbd).getGenres().getGenre();
+            String plot = ((ImdbCom.IMDB) imbd).getStoryLine();
             String reviews = getReview(((ImdbCom.IMDB) imbd).getReviews());
-            writeToFile(title, genreList, reviews);
+            writeToFile(title, genreList, reviews, plot);
 
         }
     }
 
-    private void writeToFile(String title, List<String> genreList, String reviews) throws Exception
+    private void writeToFile(String title, List<String> genreList, String reviews, String plot) throws Exception
     {
         String path = "/home/jugs/IdeaProjects/MoviesSimillarity/Review_Document";
-        if (!genreList.isEmpty())
+        if ((!genreList.isEmpty()) && (!reviews.equals("")))
         {
             for (String genre : genreList)
             {
-                String genreName = genre;
+                String genreName = genre.trim();
                 File directory = new File(path + "/" + genreName);
                 if (!directory.exists())
                 {
@@ -52,8 +53,8 @@ public class LabellingIMDBMovies
                 }
 
                 String new_title = checkTitleNamingFormat(title);
-                FileWriter fw = new FileWriter(path + "/" + genre + "/" + new_title +".txt" , false);
-                fw.write(reviews);
+                FileWriter fw = new FileWriter(path + "/" + genreName + "/" + new_title +".txt" , false);
+                fw.write(plot.trim() + "\n" + reviews.trim());
                 fw.close();
             }
         }
