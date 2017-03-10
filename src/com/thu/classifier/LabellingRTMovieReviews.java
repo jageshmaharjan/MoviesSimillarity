@@ -31,9 +31,17 @@ public class LabellingRTMovieReviews
             String title = ((RT_Movies.Item) movie).getTitle();
             String plot = ((RT_Movies.Item) movie).getStoryLine();
             List<String> reviewList = ((RT_Movies.Item) movie).getReviews().getValue();
-            System.out.println(title);
             writeToFile(title, reviewList, plot);
+//            getAllPlotOnly(plot);       //For Expiremental purpose for  word2vec
         }
+    }
+
+    private void getAllPlotOnly(String plot) throws Exception
+    {
+        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/ForWord2Vec/plotW2vData.txt";
+        FileWriter fw = new FileWriter(path, true);
+        fw.write(plot +"\n");
+        fw.close();
     }
 
     private void writeToFile(String title, List<String> reviewList, String plot) throws Exception

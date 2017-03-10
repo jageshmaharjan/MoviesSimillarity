@@ -34,8 +34,17 @@ public class LabellingIMDBMovies
             String plot = ((ImdbCom.IMDB) imbd).getStoryLine();
             String reviews = getReview(((ImdbCom.IMDB) imbd).getReviews());
             writeToFile(title, genreList, reviews, plot);
+//            getAllPlotOnly(plot);   //Experimental pupose for word2Vec
 
         }
+    }
+
+    private void getAllPlotOnly(String plot) throws Exception
+    {
+        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/ForWord2Vec/plotW2vData.txt";
+        FileWriter fw = new FileWriter(path, true);
+        fw.write(plot +"\n");
+        fw.close();
     }
 
     private void writeToFile(String title, List<String> genreList, String reviews, String plot) throws Exception
