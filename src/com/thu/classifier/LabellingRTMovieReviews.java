@@ -32,7 +32,7 @@ public class LabellingRTMovieReviews
             String plot = ((RT_Movies.Item) movie).getStoryLine();
             List<String> reviewList = ((RT_Movies.Item) movie).getReviews().getValue();
             writeToFile(title, reviewList, plot);
-//            getAllPlotOnly(plot);       //For Expiremental purpose for  word2vec
+            //getAllPlotOnly(plot);       //For Expiremental purpose for  word2vec
         }
     }
 
@@ -40,21 +40,30 @@ public class LabellingRTMovieReviews
     {
         String path = "/home/jugs/IdeaProjects/MoviesSimillarity/ForWord2Vec/plotW2vData.txt";
         FileWriter fw = new FileWriter(path, true);
-        fw.write(plot +"\n");
+        fw.write(plot.trim() +"\n");
         fw.close();
     }
 
     private void writeToFile(String title, List<String> reviewList, String plot) throws Exception
     {
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/Review_Document";
+//        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/Review_Document";
+        String path = "/home/jugs/Desktop/Test";    //Temporary Directory
         String new_title = checkTitleNamingFormat(title);
-        FileWriter fw = new FileWriter(path +"/" + new_title + ".txt" , false);
-        fw.write(plot.trim() + "\n");
+        String concatReview = "";
         for (String review : reviewList)
         {
-            fw.write(review.trim() + "\n");
+            concatReview += review.trim().replaceAll("[^\\x00-\\x7F]", " ").replace("[Full review in Spanish]", " ") + " ";
         }
+        //FileWriter fw = new FileWriter(path +"/" + new_title + ".txt" , true);
+        FileWriter fw = new FileWriter("ReviewInOneFile.txt", true);
+//        fw.write(plot.trim() + "\n");
+//        for (String review : reviewList)
+//        {
+//            fw.write(plot.trim() + " " + review.trim().replaceAll("[^\\x00-\\x7F]", "") + "\n");
+            fw.write(plot.trim() + " " + concatReview + "\n");
+//        }
         fw.close();
+        concatReview = "";
     }
 
     private String checkTitleNamingFormat(String title)

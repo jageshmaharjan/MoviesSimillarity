@@ -35,38 +35,44 @@ public class LabellingIMDBMovies
             String reviews = getReview(((ImdbCom.IMDB) imbd).getReviews());
             writeToFile(title, genreList, reviews, plot);
 //            getAllPlotOnly(plot);   //Experimental pupose for word2Vec
-
         }
     }
 
     private void getAllPlotOnly(String plot) throws Exception
     {
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/ForWord2Vec/plotW2vData.txt";
-        FileWriter fw = new FileWriter(path, true);
-        fw.write(plot +"\n");
-        fw.close();
+        if (!plot.equals("Plot is unknown.") && (!plot.equals("Add a Plot")))
+        {
+            String path = "/home/jugs/IdeaProjects/MoviesSimillarity/ForWord2Vec/plotW2vData.txt";
+            FileWriter fw = new FileWriter(path, true);
+            fw.write(plot.replaceAll("See full summary", "").trim() +"\n");
+            fw.close();
+
+        }
+
     }
 
     private void writeToFile(String title, List<String> genreList, String reviews, String plot) throws Exception
     {
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/Review_Document";
-        if ((!genreList.isEmpty()) && (!reviews.equals("")))
+        //String path = "/home/jugs/IdeaProjects/MoviesSimillarity/Review_Document";
+        String path = "/home/jugs/Desktop/Test";    //Temporary Directory
+        if ((!genreList.isEmpty()) && (!reviews.equals("")) && (!plot.equals("")))
         {
-            for (String genre : genreList)
-            {
-                String genreName = genre.trim();
-                File directory = new File(path + "/" + genreName);
-                if (!directory.exists())
-                {
-                    directory.mkdir();
-                }
+//            for (String genre : genreList)
+//            {
+//                String genreName = genre.trim();
+//                File directory = new File(path + "/" + genreName);
+//                if (!directory.exists())
+//                {
+//                    directory.mkdir();
+//                }
 
-                String new_title = checkTitleNamingFormat(title);
-                FileWriter fw = new FileWriter(path + "/" + genreName + "/" + new_title +".txt" , false);
-                fw.write(plot.trim() + "\n" + reviews.trim());
+                //String new_title = checkTitleNamingFormat(title);
+                //FileWriter fw = new FileWriter(path + "/" + genreName + "/" + new_title +".txt" , false);
+                FileWriter fw = new FileWriter("ReviewInOneFile.txt", true);
+                fw.write(genreList.get(0) + "::\t" + plot.trim() + " " + reviews.trim() + "\n");
                 fw.close();
             }
-        }
+//        }
     }
 
     private String getReview(String reviewString)
