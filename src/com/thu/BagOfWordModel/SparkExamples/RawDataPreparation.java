@@ -1,4 +1,4 @@
-package com.thu.BagOfWordModel;
+package com.thu.BagOfWordModel.SparkExamples;
 
 import com.thu.XMLDataManipulation.IMDBJavaObjectCode.ImdbCom;
 import com.thu.XMLDataManipulation.IMDBPackage.ReadIMDBXMLFile;

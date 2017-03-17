@@ -27,3 +27,9 @@ After you create your own Java class to read a data from xml file. Please check 
 5) The Movie duration in each domain differs slighly more or less by 10 minutes because of cast consideration.
     Therefore, the fault tolerance of +-10, is assigned to duration.
 6)
+
+
+-----------Package Under com.thu.BagOfWords.TFIDF---------------
+1) MovieObject.java is just an object that holds the data structure of Movie with review and its class/label
+2) TfIdfGeneration.java is a class that does the most of the things. Reads the text file that is in the format of eachline per movie review. Prepossess the text using Spark library. Initially create a JavaRDD of datatype Movieobject.
+    Process tokenization using spark library. Apply NGram, then apply to transform to TFIDF format.

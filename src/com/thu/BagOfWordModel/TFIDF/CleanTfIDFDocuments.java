@@ -1,8 +1,6 @@
 package com.thu.BagOfWordModel.TFIDF;
 
 import java.io.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * Created by jugs on 3/16/17.
@@ -16,18 +14,20 @@ public class CleanTfIDFDocuments
         cleanTfIDFDocuments.processTFIDFDoc();
     }
 
-    private void processTFIDFDoc() throws Exception
+    private String processTFIDFDoc() throws Exception
     {
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/ifidfdata.csv/part-00000";
+        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/tfidfdata.csv/part-00000";
         File file = new File(path);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line = null;
+        String tfidf = null;
         while ((line = br.readLine()) != null)
         {
-            String tfidf = line.replace("[", "").replace("]","");
+            tfidf = line.replace("[", "").replace("]","");
 //            System.out.println(tfidf);
             writeTFIDF(tfidf);
         }
+        return tfidf;
     }
 
     private void writeTFIDF(String tfidf) throws Exception
@@ -37,21 +37,23 @@ public class CleanTfIDFDocuments
         fw.close();
     }
 
-    private void processLabels() throws Exception
+    private int processLabels() throws Exception
     {
         String filePath = "/home/jugs/IdeaProjects/MoviesSimillarity/labels.txt/part-00000";
         File file = new File(filePath);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
+        int lableCode = 0;
         //Set<String> entity = new HashSet<>();
         while ((line = br.readLine()) != null)
         {
             String labels = line.replace("[","").replace("]","");
-            int lableCode = assignNumber(labels);
+            lableCode = assignNumber(labels);
             writeToLabels(labels, lableCode);
             //entity.add(labels);
         }
         //System.out.println(entity.toString());
+        return lableCode;
     }
 
     private void writeToLabels(String labels, int lableCode) throws Exception

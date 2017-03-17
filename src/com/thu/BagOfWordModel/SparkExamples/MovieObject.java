@@ -1,4 +1,4 @@
-package com.thu.BagOfWordModel;
+package com.thu.BagOfWordModel.SparkExamples;
 
 import java.io.Serializable;
 

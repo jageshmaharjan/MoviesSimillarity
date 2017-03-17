@@ -74,7 +74,7 @@ public class TfIdfGeneration
 
         JavaRDD<Vector> parsedData = featuresRDD.map(row -> parseData(row)).cache();
 
-        parsedData.saveAsTextFile("ifidfdata.csv");
+        parsedData.saveAsTextFile("tfidfdata.csv");
 
         System.out.println();
 

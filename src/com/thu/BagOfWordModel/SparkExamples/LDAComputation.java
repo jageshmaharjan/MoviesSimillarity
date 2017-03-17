@@ -1,4 +1,4 @@
-package com.thu.BagOfWordModel;
+package com.thu.BagOfWordModel.SparkExamples;
 
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;

@@ -49,22 +49,29 @@ public class LabellingRTMovieReviews
 //        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/Review_Document";
         String path = "/home/jugs/Desktop/Test";    //Temporary Directory
         String new_title = checkTitleNamingFormat(title);
+        FileWriter fw = new FileWriter(path +"/" + new_title + ".txt" , true);
+        fw.write(plot.trim() + "\n");
+        for (String review : reviewList)
+        {
+            fw.write(review.trim().replaceAll("[^\\x00-\\x7F]", "") + "\n");
+        }
+        fw.close();
+
+        //asASingleFile(title, reviewList, plot);
+    }
+
+    private void asASingleFile(String title, List<String> reviewList, String plot) throws Exception
+    {
         String concatReview = "";
         for (String review : reviewList)
         {
             concatReview += review.trim().replaceAll("[^\\x00-\\x7F]", " ").replace("[Full review in Spanish]", " ") + " ";
         }
-        //FileWriter fw = new FileWriter(path +"/" + new_title + ".txt" , true);
         FileWriter fw = new FileWriter("ReviewInOneFile.txt", true);
-//        fw.write(plot.trim() + "\n");
-//        for (String review : reviewList)
-//        {
-//            fw.write(plot.trim() + " " + review.trim().replaceAll("[^\\x00-\\x7F]", "") + "\n");
-            fw.write(plot.trim() + " " + concatReview + "\n");
-//        }
+        fw.write(plot.trim() + " " + concatReview + "\n");
         fw.close();
-        concatReview = "";
     }
+
 
     private String checkTitleNamingFormat(String title)
     {

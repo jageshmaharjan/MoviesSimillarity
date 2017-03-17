@@ -53,10 +53,9 @@ public class LabellingIMDBMovies
 
     private void writeToFile(String title, List<String> genreList, String reviews, String plot) throws Exception
     {
-        //String path = "/home/jugs/IdeaProjects/MoviesSimillarity/Review_Document";
-        String path = "/home/jugs/Desktop/Test";    //Temporary Directory
-        if ((!genreList.isEmpty()) && (!reviews.equals("")) && (!plot.equals("")))
-        {
+//        String path = "/home/jugs/Desktop/Test";    //Temporary Directory
+//        if ((!genreList.isEmpty()) && (!reviews.equals("")) && (!plot.equals("")))
+//        {
 //            for (String genre : genreList)
 //            {
 //                String genreName = genre.trim();
@@ -65,14 +64,25 @@ public class LabellingIMDBMovies
 //                {
 //                    directory.mkdir();
 //                }
-
-                //String new_title = checkTitleNamingFormat(title);
-                //FileWriter fw = new FileWriter(path + "/" + genreName + "/" + new_title +".txt" , false);
-                FileWriter fw = new FileWriter("ReviewInOneFile.txt", true);
-                fw.write(genreList.get(0) + "::\t" + plot.trim() + " " + reviews.trim() + "\n");
-                fw.close();
-            }
+//
+//                String new_title = checkTitleNamingFormat(title);
+//                FileWriter fw = new FileWriter(path + "/" + genreName + "/" + new_title +".txt" , false);
+//                fw.write(plot.trim() + "\n" + reviews.trim());
+//                fw.close();
+//            }
 //        }
+
+        asASingleFile(title,genreList,reviews,plot);    //For Spark TFIDF Generation Purpose
+    }
+
+    private void asASingleFile(String title, List<String> genreList, String reviews, String plot) throws Exception
+    {
+        if ((!genreList.get(0).isEmpty()) && (!reviews.equals("")) && (!plot.equals("")))
+        {
+            FileWriter fw = new FileWriter("ReviewInOneFile.txt", true);
+            fw.write(genreList.get(0) + "::\t" + plot.trim() + " " + reviews.trim() + "\n");
+            fw.close();
+        }
     }
 
     private String getReview(String reviewString)
