@@ -19,7 +19,8 @@ public class CleanTfIDFDocuments
 
     private String processTFIDFDoc() throws Exception
     {
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/tfidfdata.csv/part-00000";
+        //String path = "/home/jugs/IdeaProjects/MoviesSimillarity/tfidfdata.csv/part-00000";
+        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/tfidfDataPOS.csv/part-00000";
         File file = new File(path);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line = null;
