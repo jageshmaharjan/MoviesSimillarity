@@ -4,12 +4,15 @@ import java.io.*;
 
 /**
  * Created by jugs on 3/16/17.
+ * This class Reads the "tfidfdata.csv/part-00000" and "labels.txt/part-00000" file generated fom the "TfIdfGeneration.java" class,
+ * which is a spark based output file.
  */
 public class CleanTfIDFDocuments
 {
     public static void main(String[] args) throws Exception
     {
         CleanTfIDFDocuments cleanTfIDFDocuments = new CleanTfIDFDocuments();
+        //----This Method reads the "tfidfdata.csv/part-00000" file, does some cleaning
         cleanTfIDFDocuments.processLabels();
         cleanTfIDFDocuments.processTFIDFDoc();
     }

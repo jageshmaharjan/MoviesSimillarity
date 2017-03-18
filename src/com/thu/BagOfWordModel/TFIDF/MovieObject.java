@@ -8,7 +8,6 @@ public class MovieObject
     private String label;
     private String reviews;
 
-
     public String getLabel()
     {
         return label;

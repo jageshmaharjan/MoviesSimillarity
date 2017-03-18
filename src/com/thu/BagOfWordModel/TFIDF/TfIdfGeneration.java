@@ -9,6 +9,7 @@ import org.apache.spark.mllib.linalg.Vectors;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+import org.codehaus.janino.Java;
 
 /**
  * Created by jugs on 3/16/17.
@@ -44,6 +45,8 @@ public class TfIdfGeneration
         Dataset<Row> movieDF = spark.createDataFrame(movieRDD, MovieObject.class);
 
         movieDF.createOrReplaceTempView("movie");
+
+        //------------Save All the labels according to the review ---------
         movieDF.select("label").toJavaRDD().saveAsTextFile("labels.txt");
         Dataset<Row> reviewsDF = movieDF.select("reviews"); //spark.sql("select review from movie");
 
@@ -56,7 +59,7 @@ public class TfIdfGeneration
                 .setOutputCol("filtered");
         Dataset<Row> filteredData = remover.transform(wordData);
 
-        NGram nGramTransform = new NGram().setInputCol("filtered").setOutputCol("ngrams");
+        NGram nGramTransform = new NGram().setInputCol("filtered").setN(1).setOutputCol("ngrams");
         Dataset<Row> nGramDF =  nGramTransform.transform(filteredData);
 
         int numberOfFeatures = 1000;

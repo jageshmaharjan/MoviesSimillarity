@@ -31,9 +31,18 @@ public class LabellingRTMovieReviews
             String title = ((RT_Movies.Item) movie).getTitle();
             String plot = ((RT_Movies.Item) movie).getStoryLine();
             List<String> reviewList = ((RT_Movies.Item) movie).getReviews().getValue();
+            //writeTitlesOnly(title);   //Praful Work
             writeToFile(title, reviewList, plot);
             //getAllPlotOnly(plot);       //For Expiremental purpose for  word2vec
         }
+    }
+
+    //Labelling work for Praful
+    private void writeTitlesOnly(String title) throws Exception
+    {
+        FileWriter fw = new FileWriter("movieTitles.csv", true);
+        fw.write(title +"\n");
+        fw.close();
     }
 
     private void getAllPlotOnly(String plot) throws Exception
