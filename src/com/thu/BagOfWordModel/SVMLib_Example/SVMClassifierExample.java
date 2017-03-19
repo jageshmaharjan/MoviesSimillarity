@@ -15,11 +15,13 @@ public class SVMClassifierExample
     {
         SVMClassifierExample svmClassifyExample = new SVMClassifierExample();
 
-        String trainPath = "/home/jugs/Documents/libs/libsvm-3.22/data/sonar_scale_train.txt";
-        String testPath = "/home/jugs/Documents/libs/libsvm-3.22/data/sonar_test.txt";
+//        String trainPath = "/home/jugs/Documents/libs/libsvm-3.22/data/sonar_scale_train.txt";
+//        String testPath = "/home/jugs/Documents/libs/libsvm-3.22/data/sonar_test.txt";
+        String trainPath = "/home/jugs/IdeaProjects/MoviesSimillarity/tfIDFDataForSVM.txt";
+
         svm_model model2 = svmClassifyExample.svmTrain(trainPath, 208, 60);
 
-        svmClassifyExample.evaluate_all_instances(testPath, model2, 10);
+        svmClassifyExample.evaluate_all_instances(trainPath, model2, 10);
 
         System.out.println("Operation complete");
     }
@@ -216,6 +218,5 @@ public class SVMClassifierExample
         }
         System.out.println(" Prediction:" + v );
     }
-
 
 }
