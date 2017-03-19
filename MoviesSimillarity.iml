@@ -12,5 +12,6 @@
     <orderEntry type="library" name="jars" level="project" />
     <orderEntry type="library" name="stanford-parser-3.6.0-models" level="project" />
     <orderEntry type="library" name="stanford-corenlp-3.7.0-models" level="project" />
+    <orderEntry type="library" name="libsvm" level="project" />
   </component>
 </module>
