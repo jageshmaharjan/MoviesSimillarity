@@ -12,6 +12,7 @@ import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator;
 import org.apache.spark.mllib.classification.SVMModel;
 import org.apache.spark.mllib.classification.SVMWithSGD;
 import org.apache.spark.mllib.evaluation.BinaryClassificationMetrics;
+import org.apache.spark.mllib.optimization.SquaredL2Updater;
 import org.apache.spark.mllib.regression.LabeledPoint;
 import org.apache.spark.mllib.util.MLUtils;
 import org.apache.spark.sql.Dataset;
@@ -84,7 +85,11 @@ public class ApplySVMClassifier implements Serializable
         JavaRDD<LabeledPoint> test = data.subtract(training);
 
         int numInteration = 100;
-        SVMModel model = SVMWithSGD.train(training.rdd(), numInteration);
+        SVMWithSGD svmWithSGD = new SVMWithSGD();
+        svmWithSGD.optimizer().setRegParam(0.1)
+                .setUpdater(new SquaredL2Updater());
+
+        SVMModel model = svmWithSGD.train(training.rdd(),numInteration);
 
         model.clearThreshold();
 
@@ -95,7 +100,7 @@ public class ApplySVMClassifier implements Serializable
                 new BinaryClassificationMetrics(JavaRDD.toRDD(scoreAndLabels));
         double auROC = metrics.areaUnderROC();
 
-        System.out.println("Area under ROC= " + auROC);
+        System.out.println("Area under ROC=  " + auROC);
 
         //model.save(sc, "JModel");
     }

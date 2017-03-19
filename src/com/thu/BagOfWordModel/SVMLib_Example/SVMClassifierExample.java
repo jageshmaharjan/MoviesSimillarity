@@ -11,26 +11,32 @@ import java.util.LinkedList;
  */
 public class SVMClassifierExample
 {
+    public static void main(String[] args) throws Exception
+    {
+        SVMClassifierExample svmClassifyExample = new SVMClassifierExample();
+
+        String trainPath = "/home/jugs/Documents/libs/libsvm-3.22/data/sonar_scale_train.txt";
+        String testPath = "/home/jugs/Documents/libs/libsvm-3.22/data/sonar_test.txt";
+        svm_model model2 = svmClassifyExample.svmTrain(trainPath, 208, 60);
+
+        svmClassifyExample.evaluate_all_instances(testPath, model2, 10);
+
+        System.out.println("Operation complete");
+    }
+
     //class to train the model
-    public svm_model svmTrain(String Filename1, int record_size, int feature_count )
+    public svm_model svmTrain(String Filename1, int record_size, int feature_count ) throws Exception
     {
         //read the data from file and put it in the train module
         LinkedList<String> Dataset = new LinkedList<String>();//stores the lines from the given file
-        try
-        {
             //int i=0;
-            BufferedReader br1 = new BufferedReader(new FileReader(Filename1));
-            String line;
-            while ((line = br1.readLine()) != null)
-            {
-                Dataset.add(line);
-            }
-            br1.close();
-        }
-        catch(Exception e)
+        BufferedReader br1 = new BufferedReader(new FileReader(Filename1));
+        String line;
+        while ((line = br1.readLine()) != null)
         {
-            e.printStackTrace();
+            Dataset.add(line);
         }
+        br1.close();
         System.out.println("Dataset Size "+Dataset.size());
 
         double node_values[][] = new double[record_size][]; //jagged array used to store values
@@ -211,16 +217,5 @@ public class SVMClassifierExample
         System.out.println(" Prediction:" + v );
     }
 
-    public static void main(String[] args)
-    {
-        SVMClassifierExample svmClassifyExample = new SVMClassifierExample();
 
-        String trainPath = "/home/jugs/Documents/libs/libsvm-3.22/data/sonar_scale_train.txt";
-        String testPath = "/home/jugs/Documents/libs/libsvm-3.22/data/sonar_test.txt";
-        svm_model model2 = svmClassifyExample.svmTrain(trainPath, 208, 60);
-
-        svmClassifyExample.evaluate_all_instances(testPath, model2, 10);
-
-        System.out.println("Operation complete");
-    }
 }

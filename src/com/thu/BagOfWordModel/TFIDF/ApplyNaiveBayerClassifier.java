@@ -57,7 +57,7 @@ public class ApplyNaiveBayerClassifier implements Serializable
             }
         }).count()/(double)test.count();
 
-        System.out.println();
+        System.out.println("Accuracy: " + accuracy);
 
         //---saving the classifier model---
 //        String pathToSaveModel = "";
