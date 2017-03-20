@@ -1,4 +1,4 @@
-package com.thu.classifier;
+package com.thu.classifier_Preprocessing;
 
 import com.thu.XMLDataManipulation.RT_JavaObjectCode.RT_Movies;
 import com.thu.XMLDataManipulation.RT_Package.ReadRT_XMLFile;

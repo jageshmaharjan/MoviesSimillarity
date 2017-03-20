@@ -1,4 +1,4 @@
-package thu.keg.jugs;
+package thu.ScratchWork.jugs;
 
 
 import java.util.Properties;

@@ -1,4 +1,4 @@
-package com.thu.BagOfWordModel.TFIDF;
+package com.thu.BagOfWordModel.TFIDF_Processing;
 
 import java.io.*;
 
@@ -20,7 +20,7 @@ public class CleanTfIDFDocuments
     private String processTFIDFDoc() throws Exception
     {
         //String path = "/home/jugs/IdeaProjects/MoviesSimillarity/tfidfdata.csv/part-00000";
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/tfidfDataPOS.csv/part-00000";
+        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/tfidfDataPOS.csv/part-00000";
         File file = new File(path);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line = null;
@@ -36,14 +36,14 @@ public class CleanTfIDFDocuments
 
     private void writeTFIDF(String tfidf) throws Exception
     {
-        FileWriter fw = new FileWriter("tfidfReview.csv", true);
+        FileWriter fw = new FileWriter("PrafulLabelling/tfidfReview.csv", true);
         fw.write(tfidf + "\n");
         fw.close();
     }
 
     private int processLabels() throws Exception
     {
-        String filePath = "/home/jugs/IdeaProjects/MoviesSimillarity/labels.txt/part-00000";
+        String filePath = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/labels.txt/part-00000";
         File file = new File(filePath);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
@@ -62,7 +62,7 @@ public class CleanTfIDFDocuments
 
     private void writeToLabels(String labels, int lableCode) throws Exception
     {
-        FileWriter fw = new FileWriter("labelAndCode.csv", true);
+        FileWriter fw = new FileWriter("PrafulLabelling/labelAndCode.csv", true);
         fw.write(lableCode + "," + labels + "\n");
         fw.close();
     }

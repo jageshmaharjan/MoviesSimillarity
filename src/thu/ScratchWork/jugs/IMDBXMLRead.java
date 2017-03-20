@@ -1,4 +1,4 @@
-package thu.keg.jugs;
+package thu.ScratchWork.jugs;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Unmarshaller;

@@ -1,5 +1,5 @@
 
-package thu.keg.jugs;
+package thu.ScratchWork.jugs;
 
 import java.util.ArrayList;
 import java.util.List;

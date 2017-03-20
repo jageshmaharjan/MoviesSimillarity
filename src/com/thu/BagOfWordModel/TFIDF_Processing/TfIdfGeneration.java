@@ -1,4 +1,4 @@
-package com.thu.BagOfWordModel.TFIDF;
+package com.thu.BagOfWordModel.TFIDF_Processing;
 
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.function.Function;
@@ -9,10 +9,12 @@ import org.apache.spark.mllib.linalg.Vectors;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
-import org.codehaus.janino.Java;
 
 /**
  * Created by jugs on 3/16/17.
+ * This class generates TFIDF from the text file where each line is review of one movie.
+ * Reads one line as a document and generates a tfidf. This is a direct Strategy for generating TFIDF, (i.e without filtering any POS).
+ * This may contains huge noise, and error rate might be very high too.
  */
 public class TfIdfGeneration
 {

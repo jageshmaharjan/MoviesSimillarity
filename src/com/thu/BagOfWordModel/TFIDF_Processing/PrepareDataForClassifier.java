@@ -1,4 +1,4 @@
-package com.thu.BagOfWordModel.TFIDF;
+package com.thu.BagOfWordModel.TFIDF_Processing;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,8 +18,8 @@ public class PrepareDataForClassifier
     {
         PrepareDataForClassifier prepareDataForClassifier = new PrepareDataForClassifier();
 
-        String lableFilepath = "/home/jugs/IdeaProjects/MoviesSimillarity/labelAndCode.csv";
-        String tfidfFilePath = "/home/jugs/IdeaProjects/MoviesSimillarity/tfidfReview.csv";
+        String lableFilepath = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/labelAndCode.csv";
+        String tfidfFilePath = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/tfidfReview.csv";
 
         List<String> labelList = prepareDataForClassifier.readParameterFile(lableFilepath);
         List<String> tfidfList = prepareDataForClassifier.readParameterFile(tfidfFilePath);
@@ -40,7 +40,7 @@ public class PrepareDataForClassifier
             int label = getLabel(labelList.get(i).split(",")[1]);
             String sparsevec = getSparseFormat(tfidfList.get(i));
 
-            FileWriter fw  = new FileWriter("tfIDFDataForSVM.txt",true);
+            FileWriter fw  = new FileWriter("PrafulLabelling/tfIDFDataForSVM.txt",true);
             fw.write(label + " " + sparsevec + "\n" );
             fw.close();
 
@@ -96,34 +96,34 @@ public class PrepareDataForClassifier
                 lblValue = 5;
                 break;
             case "Animation":
-                lblValue = 6;
+                lblValue = 5;
                 break;
             case "Comedy":
-                lblValue = 7;
+                lblValue = 6;
                 break;
             case "Mystery":
-                lblValue = 8;
+                lblValue = 7;
                 break;
             case "Sci-Fi":
-                lblValue = 8;
+                lblValue = 7;
                 break;
             case "Drama":
-                lblValue = 9;
+                lblValue = 8;
                 break;
             case "Family":
-                lblValue = 9;
+                lblValue = 8;
                 break;
             case "Romance":
-                lblValue = 9;
+                lblValue = 8;
                 break;
             case "Film-Noir":
-                lblValue = 9;
+                lblValue = 8;
                 break;
             case "Western":
-                lblValue = 9;
+                lblValue = 8;
                 break;
             case "Musical":
-                lblValue = 9;
+                lblValue = 8;
                 break;
         }
         return lblValue;
@@ -135,7 +135,7 @@ public class PrepareDataForClassifier
         {
             //String labelCode = labelList.get(i).split(",")[0];
             int label = getLabel(labelList.get(i).split(",")[1]);
-            FileWriter fw = new FileWriter("tfIDFDataForMLP.csv",true);
+            FileWriter fw = new FileWriter("PrafulLabelling/tfIDFDataForMLP.csv",true);
             fw.write(tfidfList.get(i) + "," + label +"\n");
             fw.close();
         }

@@ -1,10 +1,8 @@
-package com.thu.BagOfWordModel.TFIDF;
+package com.thu.BagOfWordModel.Algorithms;
 
-import com.esotericsoftware.reflectasm.shaded.org.objectweb.asm.Label;
 import org.apache.spark.SparkConf;
 import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.JavaRDD;
-import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.ml.classification.OneVsRest;
 import org.apache.spark.ml.classification.LogisticRegression;
 import org.apache.spark.ml.classification.OneVsRestModel;
@@ -21,7 +19,6 @@ import org.apache.spark.sql.SparkSession;
 import scala.Tuple2;
 
 import java.io.Serializable;
-import java.util.function.Function;
 
 /**
  * Created by jugs on 3/16/17.

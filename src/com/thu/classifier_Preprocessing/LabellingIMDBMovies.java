@@ -1,9 +1,8 @@
-package com.thu.classifier;
+package com.thu.classifier_Preprocessing;
 
 import com.thu.XMLDataManipulation.IMDBJavaObjectCode.ImdbCom;
 import com.thu.XMLDataManipulation.IMDBPackage.ReadIMDBXMLFile;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.util.List;
 

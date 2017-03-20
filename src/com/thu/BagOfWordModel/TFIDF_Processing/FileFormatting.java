@@ -1,7 +1,5 @@
-package com.thu.BagOfWordModel.TFIDF;
+package com.thu.BagOfWordModel.TFIDF_Processing;
 
-import org.apache.spark.SparkConf;
-import org.apache.spark.SparkContext;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.sql.SparkSession;
 

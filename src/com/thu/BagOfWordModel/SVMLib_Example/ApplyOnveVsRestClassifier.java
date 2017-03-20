@@ -26,7 +26,7 @@ public class ApplyOnveVsRestClassifier
                 .appName("One Vs Rest Classifier")
                 .getOrCreate();
 
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/tfIDFDataForSVM.txt";
+        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/tfIDFDataForSVM.txt";
 
         Dataset<Row> inputData = spark.read().format("libsvm").load(path);
 

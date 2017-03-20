@@ -1,11 +1,8 @@
-package com.thu.BagOfWordModel.TFIDF;
+package com.thu.BagOfWordModel.TFIDF_Processing;
 
-import edu.stanford.nlp.ling.CoreAnnotation;
 import edu.stanford.nlp.ling.CoreAnnotations;
-import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
 import edu.stanford.nlp.pipeline.StanfordCoreNLP;
-import edu.stanford.nlp.util.CoreMap;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -18,7 +15,7 @@ import java.util.stream.Collectors;
  * Created by jugs on 3/18/17.
  * Reads the Review File, extracts the features(tokens/lemma) based on PartOfSpeech (POS), and outputs the review with only tokens in a file. The output Format is as:
  * label:: tok_1, tok_2, ..... tok_n
- * Note* :: Choose the POS based on the need Type
+ * Note* -> Choose the POS based on the need Type
  */
 public class FeaturesExtractionStanfordNLP
 {
@@ -46,7 +43,8 @@ public class FeaturesExtractionStanfordNLP
 
     private void program() throws Exception
     {
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/ReviewInOneFile.txt";
+        //String path = "/home/jugs/IdeaProjects/MoviesSimillarity/IMDBLabelling/ReviewInOneFile.txt";
+        String path = "PrafulLabelling/reviewRTWithLabelInOneFile.txt";
         File file = new File(path);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
@@ -62,7 +60,7 @@ public class FeaturesExtractionStanfordNLP
 
     private void saveTokensPerDocument(String classType, List tokens) throws Exception
     {
-        FileWriter fw = new FileWriter("reviewOnPOSBased.txt",true);
+        FileWriter fw = new FileWriter("PrafulLabelling/reviewOnPOSBasedPrafulLabel.txt",true);
         String tokenString = tokens.toString().replaceAll("\\[","").replaceAll("]","");
         fw.write(classType + "::\t" + tokenString + "\n");
         fw.close();

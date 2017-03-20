@@ -1,4 +1,4 @@
-package com.thu.BagOfWordModel.TFIDF;
+package com.thu.BagOfWordModel.TFIDF_Processing;
 
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
@@ -14,11 +14,7 @@ import org.apache.spark.mllib.linalg.Vectors;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.types.*;
-import scala.math.Ordering;
 
-import java.io.Serializable;
-import java.sql.Struct;
 import java.util.List;
 import java.util.Properties;
 
@@ -37,7 +33,8 @@ public class StanfordNLPProcessing
 
     private void readPOSFilteredFile()
     {
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/reviewOnPOSBased.txt";
+//        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/reviewOnPOSBased.txt";
+        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/reviewOnPOSBasedPrafulLabel.txt";
 
         SparkSession spark = SparkSession
                 .builder()
@@ -57,7 +54,7 @@ public class StanfordNLPProcessing
         recordDF.createOrReplaceTempView("movie");
         //recordDF.show();
 
-        //recordDF.select("label").toJavaRDD().saveAsTextFile("labels.txt");
+        recordDF.select("label").toJavaRDD().saveAsTextFile("PrafulLabelling/labels.txt");
         Dataset<Row> reviews = recordDF.select("reviews");
 
         RegexTokenizer tokenizer = new RegexTokenizer().setPattern(",").setInputCol("reviews").setOutputCol("tokens");
@@ -76,7 +73,7 @@ public class StanfordNLPProcessing
         JavaRDD<Row> featuredRDD = idfModel.transform(featuredData).select("features").toJavaRDD().cache();
         JavaRDD<Vector> parsedData = featuredRDD.map(row -> parseData(row)).cache();
 
-        parsedData.saveAsTextFile("tfidfDataPOS.csv");
+        parsedData.saveAsTextFile("PrafulLabelling/tfidfDataPOS.csv");
 
         System.out.println();
     }

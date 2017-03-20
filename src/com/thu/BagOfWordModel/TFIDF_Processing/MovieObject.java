@@ -1,4 +1,4 @@
-package com.thu.BagOfWordModel.TFIDF;
+package com.thu.BagOfWordModel.TFIDF_Processing;
 
 /**
  * Created by jugs on 3/16/17.

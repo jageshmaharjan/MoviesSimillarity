@@ -1,4 +1,4 @@
-package com.thu.BagOfWordModel.TFIDF;
+package com.thu.BagOfWordModel.Algorithms;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.SparkContext;
@@ -30,7 +30,7 @@ public class ApplyNaiveBayerClassifier implements Serializable
         SparkConf conf = new SparkConf().setAppName("Naive bayers Classifier").setMaster("local[*]");
         SparkContext sc = new SparkContext(conf);
 
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/tfIDFDataForSVM.txt";
+        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/tfIDFDataForSVM.txt";
 
         JavaRDD<LabeledPoint> inputData = MLUtils.loadLibSVMFile(sc, path).toJavaRDD();
         JavaRDD<LabeledPoint>[] tmp = inputData.randomSplit(new double[]{0.6, 0.4});
