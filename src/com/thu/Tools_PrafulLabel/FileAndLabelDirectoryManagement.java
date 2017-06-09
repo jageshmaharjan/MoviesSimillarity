@@ -28,7 +28,7 @@ public class FileAndLabelDirectoryManagement
         while ((line = br.readLine()) != null)
         {
             String[] movieClass = line.split(",");
-            copyFileToDirectory(movieClass[0], movieClass[1]);
+            copyFileToDirectory(movieClass[0], movieClass[1].trim());
             //System.out.println(movieClass[0] + " : " + movieClass[1]);
         }
     }
@@ -43,9 +43,9 @@ public class FileAndLabelDirectoryManagement
         }
         File file = new File(fileAndDirPath);
         File[] listFiles = file.listFiles();
-        for (int i=0;i < listFiles.length; i++)
+        for (int i=0; i < listFiles.length; i++)
         {
-            if ((listFiles[i].getName().equals(movieTitle+".txt")))
+            if ((listFiles[i].getName().trim().equals(movieTitle+".txt")))
             {
                 FileUtils.copyFileToDirectory(listFiles[i],dir);
                 System.out.println(listFiles[i].getName());

@@ -40,7 +40,7 @@ public class ApplySVMClassifier implements Serializable
                 .master("local")
                 .getOrCreate();
 
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/tfIDFDataForSVM.txt";
+        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/tfIDFDataForSVM_1.txt";
         Dataset<Row> inputData = spark.read().format("libsvm").load(path);
 
         Dataset<Row>[] tmp = inputData.randomSplit(new double[]{0.8,0.2});
@@ -73,7 +73,7 @@ public class ApplySVMClassifier implements Serializable
         SparkConf conf = new SparkConf().setAppName("JavaWithSVM").setMaster("local");
         SparkContext sc = new SparkContext(conf);
 
-        String pathFormatted = "/home/jugs/IdeaProjects/MoviesSimillarity/tfIDFDataForSVM.txt";
+        String pathFormatted = "src/com/thu/BagOfWordModel/Algorithms/test_svm_data.txt"; //"/home/jugs/IdeaProjects/MoviesSimillarity/tfIDFDataForSVM_1.txt";
 //        String pathFormatted = "/home/jugs/IdeaProjects/MoviesSimillarity/src/com/thu/BagOfWordModel/TFIDF/test_svm_data.txt";
         JavaRDD<LabeledPoint> data = MLUtils.loadLibSVMFile(sc, pathFormatted).toJavaRDD();
 

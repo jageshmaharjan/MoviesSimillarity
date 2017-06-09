@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created by jugs on 3/18/17.
- * Reads the Review File, extracts the features(tokens/lemma) based on PartOfSpeech (POS), and outputs the review with only tokens in a file. The output Format is as:
+ * Reads the Review File (AllReviewinOnewFile), extracts the features(tokens/lemma) based on PartOfSpeech (POS), and outputs the review with only tokens in a file. The output Format is as:
  * label:: tok_1, tok_2, ..... tok_n
  * Note* -> Choose the POS based on the need Type
  */
@@ -23,8 +23,9 @@ public class FeaturesExtractionStanfordNLP
      * https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html
       */
     private static final Set<String> ALLOWED = new HashSet<>(Arrays.asList
-            ("NN","NNS","NNP","NNPS")); //----All NOUN Form----
-//            ("JJ", "JJS", "JJR", "RB", "RBR", "RBS", "UH","VB","WRB","VBD","VBG","VBN","VBP","VBZ"));
+            ("NN","NNS","NNP","NNPS",    //----All NOUN Form----
+            "JJ", "JJS", "JJR", "RB", "RBR", "RBS"));
+            //, "VB","WRB","VBD","VBG","VBN","VBP","VBZ"));
 
     private StanfordCoreNLP pipeline;
 
@@ -43,8 +44,9 @@ public class FeaturesExtractionStanfordNLP
 
     private void program() throws Exception
     {
-        //String path = "/home/jugs/IdeaProjects/MoviesSimillarity/IMDBLabelling/ReviewInOneFile.txt";
-        String path = "PrafulLabelling/reviewRTWithLabelInOneFile.txt";
+        String path = "IMDBLabelling/reviewIMDBWithLabelInOneFile.txt";
+//        String path = "PrafulLabelling/reviewRTWithLabelInOneFile.txt";
+//        String path = "MoviePlotAndlabel/plotW2vData.txt";
         File file = new File(path);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
@@ -55,12 +57,14 @@ public class FeaturesExtractionStanfordNLP
             List tokens = getTokens(split[1]);
             saveTokensPerDocument(classType, tokens);
         }
-
     }
 
     private void saveTokensPerDocument(String classType, List tokens) throws Exception
     {
-        FileWriter fw = new FileWriter("PrafulLabelling/reviewOnPOSBasedPrafulLabel.txt",true);
+        String path = "IMDBLabelling/POSBasedlabel.txt";
+//        String path = "PrafulLabelling/reviewOnPOSBasedPrafulLabel.txt";
+//        String path = "MoviePlotAndlabel/POSBasedlabel.txt";
+        FileWriter fw = new FileWriter(path ,true);
         String tokenString = tokens.toString().replaceAll("\\[","").replaceAll("]","");
         fw.write(classType + "::\t" + tokenString + "\n");
         fw.close();
@@ -86,6 +90,7 @@ public class FeaturesExtractionStanfordNLP
 //                System.out.println("POS: " + pos + ", Lemma: " + lemma);
 //            }
 //        }
+
         /**
          * Reads the Review per Movie, SentenceAnnotation, TokenAnnotation,
          * PartsOfSpeechAnnotaion, LemmaAnnotatopm are read in the stream, and returns list the applicable lemma.

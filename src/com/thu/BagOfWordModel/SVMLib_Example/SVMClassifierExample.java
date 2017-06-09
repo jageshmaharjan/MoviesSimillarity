@@ -17,7 +17,7 @@ public class SVMClassifierExample
 
 //        String trainPath = "/home/jugs/Documents/libs/libsvm-3.22/data/sonar_scale_train.txt";
 //        String testPath = "/home/jugs/Documents/libs/libsvm-3.22/data/sonar_test.txt";
-        String trainPath = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/tfIDFDataForSVM.txt";
+        String trainPath = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/tfIDFDataForSVM_1.txt";
 
         svm_model model2 = svmClassifyExample.svmTrain(trainPath, 208, 60);
 
@@ -216,7 +216,7 @@ public class SVMClassifierExample
         {
             System.out.print("(" + labels[i] + ":" + prob_estimates[i] + ")");
         }
-        System.out.println(" Prediction:" + v );
+        System.out.println(" Prediction: " + v );
     }
 
 }

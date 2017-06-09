@@ -13,5 +13,7 @@
     <orderEntry type="library" name="stanford-parser-3.6.0-models" level="project" />
     <orderEntry type="library" name="stanford-corenlp-3.7.0-models" level="project" />
     <orderEntry type="library" name="libsvm" level="project" />
+    <orderEntry type="library" name="nd4j-native-0.8.0" level="project" />
+    <orderEntry type="library" name="javaml-0.1" level="project" />
   </component>
 </module>

@@ -1,4 +1,4 @@
-package com.thu.BagOfWordModel.SVMLib_Example;
+package com.thu.BagOfWordModel.Algorithms;
 
 import org.apache.spark.ml.classification.LogisticRegression;
 import org.apache.spark.ml.classification.OneVsRest;
@@ -26,7 +26,8 @@ public class ApplyOnveVsRestClassifier
                 .appName("One Vs Rest Classifier")
                 .getOrCreate();
 
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/tfIDFDataForSVM.txt";
+        String path = "PrafulLabelling/tfIDFDataForSVM.txt";
+//        String path = "MoviePlotAndlabel/tfIDFDataForSVM_1.txt";
 
         Dataset<Row> inputData = spark.read().format("libsvm").load(path);
 

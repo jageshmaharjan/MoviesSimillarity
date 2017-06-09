@@ -1,5 +1,7 @@
 package com.thu.BagOfWordModel.TFIDF_Processing;
 
+import org.apache.spark.sql.catalyst.plans.logical.Except;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -18,8 +20,12 @@ public class PrepareDataForClassifier
     {
         PrepareDataForClassifier prepareDataForClassifier = new PrepareDataForClassifier();
 
-        String lableFilepath = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/labelAndCode.csv";
-        String tfidfFilePath = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/tfidfReview.csv";
+        String lableFilepath = "IMDBLabelling/labelAndCode.csv";
+        String tfidfFilePath = "IMDBLabelling/tfidfReview.csv";
+//        String lableFilepath = "PrafulLabelling/labelAndCode.csv";
+//        String tfidfFilePath = "PrafulLabelling/tfidfReview.csv";
+//        String lableFilepath = "MoviePlotAndlabel/labelAndCode.csv";
+//        String tfidfFilePath = "MoviePlotAndlabel/tfidfReview.csv";
 
         List<String> labelList = prepareDataForClassifier.readParameterFile(lableFilepath);
         List<String> tfidfList = prepareDataForClassifier.readParameterFile(tfidfFilePath);
@@ -37,13 +43,17 @@ public class PrepareDataForClassifier
     {
         for (int i= 0; i< tfidfList.size(); i++)
         {
-            int label = getLabel(labelList.get(i).split(",")[1]);
-            String sparsevec = getSparseFormat(tfidfList.get(i));
-
-            FileWriter fw  = new FileWriter("PrafulLabelling/tfIDFDataForSVM.txt",true);
-            fw.write(label + " " + sparsevec + "\n" );
-            fw.close();
-
+            if (labelList.get(i).split(",").length == 2)
+            {
+                int label = getLabel(labelList.get(i).split(",")[1]);
+                String sparsevec = getSparseFormat(tfidfList.get(i));
+                String path ="IMDBLabelling/tfIDFDataForSVM.txt";
+//                String path ="PrafulLabelling/tfIDFDataForSVM.txt";
+//                String path ="MoviePlotAndlabel/tfIDFDataForSVM.txt";
+                FileWriter fw  = new FileWriter(path,true);
+                fw.write(label + " " + sparsevec + "\n" );
+                fw.close();
+            }
         }
     }
 
@@ -133,17 +143,22 @@ public class PrepareDataForClassifier
     {
         for (int i=0; i<tfidfList.size(); i++)
         {
-            //String labelCode = labelList.get(i).split(",")[0];
-            int label = getLabel(labelList.get(i).split(",")[1]);
-            FileWriter fw = new FileWriter("PrafulLabelling/tfIDFDataForMLP.csv",true);
-            fw.write(tfidfList.get(i) + "," + label +"\n");
-            fw.close();
+            if (labelList.get(i).split(",").length == 2)
+            {
+                //String labelCode = labelList.get(i).split(",")[0];
+                int label = getLabel(labelList.get(i).split(",")[1]);
+                String path = "IMDBLabelling/tfIDFDataForMLP.csv";
+//            String path = "PrafulLabelling/tfIDFDataForMLP.csv";
+//                String path = "MoviePlotAndlabel/tfIDFDataForMLP.csv";
+                FileWriter fw = new FileWriter(path,true);
+                fw.write(tfidfList.get(i) + "," + label +"\n");
+                fw.close();
+            }
         }
     }
 
     private List<String> readParameterFile(String filePath) throws Exception
     {
-
         File file = new File(filePath);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;

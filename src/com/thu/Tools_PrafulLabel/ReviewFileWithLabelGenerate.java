@@ -17,7 +17,7 @@ public class ReviewFileWithLabelGenerate
 
     private void program() throws Exception
     {
-        String path ="/home/jugs/IdeaProjects/MoviesSimillarity/Review_Document/RottenTomatoes";
+        String path ="/home/jugs/IdeaProjects/MoviesSimillarity/Review_Document/unlabelled";
         File parentDir = new File(path);
         File[] dirs = parentDir.listFiles();
         for (File dir : dirs)

@@ -19,8 +19,9 @@ public class CleanTfIDFDocuments
 
     private String processTFIDFDoc() throws Exception
     {
-        //String path = "/home/jugs/IdeaProjects/MoviesSimillarity/tfidfdata.csv/part-00000";
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/tfidfDataPOS.csv/part-00000";
+        String path = "IMDBLabelling/tfidfDataPOS.csv/part-00001";
+//        String path = "PrafulLabelling/tfidfDataPOS.csv/part-00000";
+//        String path = "MoviePlotAndlabel/tfidfDataPOS.csv/part-00000";
         File file = new File(path);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line = null;
@@ -36,14 +37,19 @@ public class CleanTfIDFDocuments
 
     private void writeTFIDF(String tfidf) throws Exception
     {
-        FileWriter fw = new FileWriter("PrafulLabelling/tfidfReview.csv", true);
+        String path = "IMDBLabelling/tfidfReview.csv";
+//        String path = "PrafulLabelling/tfidfReview.csv";
+//        String path = "MoviePlotAndlabel/tfidfReview.csv";
+        FileWriter fw = new FileWriter(path, true);
         fw.write(tfidf + "\n");
         fw.close();
     }
 
     private int processLabels() throws Exception
     {
-        String filePath = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/labels.txt/part-00000";
+        String filePath = "IMDBLabelling/labels.txt/part-00001";
+//        String filePath = "PrafulLabelling/labels.txt/part-00000";
+//        String filePath = "MoviePlotAndlabel/labels.txt/part-00000";
         File file = new File(filePath);
         BufferedReader br = new BufferedReader(new FileReader(file));
         String line;
@@ -62,7 +68,10 @@ public class CleanTfIDFDocuments
 
     private void writeToLabels(String labels, int lableCode) throws Exception
     {
-        FileWriter fw = new FileWriter("PrafulLabelling/labelAndCode.csv", true);
+        String path = "IMDBLabelling/labelAndCode.csv";
+//        String path = "PrafulLabelling/labelAndCode.csv";
+//        String path = "MoviePlotAndlabel/labelAndCode.csv";
+        FileWriter fw = new FileWriter(path, true);
         fw.write(lableCode + "," + labels + "\n");
         fw.close();
     }

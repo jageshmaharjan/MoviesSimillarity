@@ -13,6 +13,7 @@ import org.apache.spark.mllib.util.MLUtils;
 import scala.Tuple2;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 /**
  * Created by jugs on 3/19/17.
@@ -23,6 +24,7 @@ public class ApplyNaiveBayerClassifier implements Serializable
     {
         ApplyNaiveBayerClassifier nbClassifier = new ApplyNaiveBayerClassifier();
         nbClassifier.program();
+
     }
 
     private void program()
@@ -30,10 +32,11 @@ public class ApplyNaiveBayerClassifier implements Serializable
         SparkConf conf = new SparkConf().setAppName("Naive bayers Classifier").setMaster("local[*]");
         SparkContext sc = new SparkContext(conf);
 
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/tfIDFDataForSVM.txt";
+        String path = "PrafulLabelling/tfIDFDataForSVM.txt";
+//        String path = "MoviePlotAndlabel/tfIDFDataForSVM_1.txt";
 
         JavaRDD<LabeledPoint> inputData = MLUtils.loadLibSVMFile(sc, path).toJavaRDD();
-        JavaRDD<LabeledPoint>[] tmp = inputData.randomSplit(new double[]{0.6, 0.4});
+        JavaRDD<LabeledPoint>[] tmp = inputData.randomSplit(new double[]{0.8, 0.2});
         JavaRDD<LabeledPoint> training = tmp[0];
         JavaRDD<LabeledPoint> test = tmp[1];
 

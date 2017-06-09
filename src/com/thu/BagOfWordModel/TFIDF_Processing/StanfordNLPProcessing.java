@@ -33,9 +33,9 @@ public class StanfordNLPProcessing
 
     private void readPOSFilteredFile()
     {
-//        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/reviewOnPOSBased.txt";
-        String path = "/home/jugs/IdeaProjects/MoviesSimillarity/PrafulLabelling/reviewOnPOSBasedPrafulLabel.txt";
-
+        String path = "IMDBLabelling/POSBasedlabel.txt";
+//        String path = "PrafulLabelling/reviewOnPOSBasedPrafulLabel.txt";
+//        String path = "MoviePlotAndlabel/POSBasedlabel.txt";
         SparkSession spark = SparkSession
                 .builder()
                 .appName("TFIDF Generation - POS Filtered Tokens")
@@ -54,7 +54,9 @@ public class StanfordNLPProcessing
         recordDF.createOrReplaceTempView("movie");
         //recordDF.show();
 
-        recordDF.select("label").toJavaRDD().saveAsTextFile("PrafulLabelling/labels.txt");
+        recordDF.select("label").toJavaRDD().saveAsTextFile("IMDBLabelling/labels.txt");
+//        recordDF.select("label").toJavaRDD().saveAsTextFile("PrafulLabelling/labels.txt");
+//        recordDF.select("label").toJavaRDD().saveAsTextFile("MoviePlotAndlabel/labels.txt");
         Dataset<Row> reviews = recordDF.select("reviews");
 
         RegexTokenizer tokenizer = new RegexTokenizer().setPattern(",").setInputCol("reviews").setOutputCol("tokens");
@@ -73,7 +75,9 @@ public class StanfordNLPProcessing
         JavaRDD<Row> featuredRDD = idfModel.transform(featuredData).select("features").toJavaRDD().cache();
         JavaRDD<Vector> parsedData = featuredRDD.map(row -> parseData(row)).cache();
 
-        parsedData.saveAsTextFile("PrafulLabelling/tfidfDataPOS.csv");
+        parsedData.saveAsTextFile("IMDBLabelling/tfidfDataPOS.csv");
+//        parsedData.saveAsTextFile("PrafulLabelling/tfidfDataPOS.csv");
+//        parsedData.saveAsTextFile("MoviePlotAndlabel/tfidfDataPOS.csv");
 
         System.out.println();
     }

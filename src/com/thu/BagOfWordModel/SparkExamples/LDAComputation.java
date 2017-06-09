@@ -50,7 +50,7 @@ public class LDAComputation implements Serializable
                 .getOrCreate();
 
         JavaRDD<MovieObject> movieRDD = new JavaSparkContext(spark.sparkContext()).parallelize(movieObjectList);
-        Dataset<Row> movieDf = spark.createDataFrame(movieRDD,MovieObject.class);
+        Dataset<Row> movieDf = spark.createDataFrame(movieRDD, MovieObject.class);
 
         movieDf.createOrReplaceTempView("movie");
         Dataset<Row> reviewDf = movieDf.select("review");
@@ -96,10 +96,6 @@ public class LDAComputation implements Serializable
             }
             System.out.println();
         }
-
-
         System.out.println();
-
     }
-
 }

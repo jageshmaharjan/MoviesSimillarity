@@ -33,21 +33,19 @@ public class LabellingIMDBMovies
             String plot = ((ImdbCom.IMDB) imbd).getStoryLine();
             String reviews = getReview(((ImdbCom.IMDB) imbd).getReviews());
             writeToFile(title, genreList, reviews, plot);
-//            getAllPlotOnly(plot);   //Experimental pupose for word2Vec
+//            getAllPlotOnly(genreList, plot);   //Experimental pupose for word2Vec
         }
     }
 
-    private void getAllPlotOnly(String plot) throws Exception
+    private void getAllPlotOnly(List genreList, String plot) throws Exception
     {
         if (!plot.equals("Plot is unknown.") && (!plot.equals("Add a Plot")))
         {
-            String path = "/home/jugs/IdeaProjects/MoviesSimillarity/ForWord2Vec/plotW2vData.txt";
+            String path = "MoviePlotAndlabel/plotW2vData.txt";
             FileWriter fw = new FileWriter(path, true);
-            fw.write(plot.replaceAll("See full summary", "").trim() +"\n");
+            fw.write( genreList.get(0).toString().trim() + "::\t" + getReview(plot) + '\n');
             fw.close();
-
         }
-
     }
 
     private void writeToFile(String title, List<String> genreList, String reviews, String plot) throws Exception
@@ -78,8 +76,9 @@ public class LabellingIMDBMovies
     {
         if ((!genreList.get(0).isEmpty()) && (!reviews.equals("")) && (!plot.equals("")))
         {
-            FileWriter fw = new FileWriter("ReviewInOneFile.txt", true);
-            fw.write(genreList.get(0) + "::\t" + plot.trim() + " " + reviews.trim() + "\n");
+            String path = "IMDBLabelling/reviewIMDBWithLabelInOneFile.txt";
+            FileWriter fw = new FileWriter(path, true);
+            fw.write(genreList.get(0) + "::\t" + getReview(reviews.trim())+ "\n");
             fw.close();
         }
     }
